@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t bonk/simple-react-with-docker:latest -f Dockerfile.dev .
+
+script:
+    - docker run -e "CI=true" bonk/simple-react-with-docker npm run test
